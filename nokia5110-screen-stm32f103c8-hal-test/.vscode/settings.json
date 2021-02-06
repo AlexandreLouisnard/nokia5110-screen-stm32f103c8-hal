@@ -1,0 +1,6 @@
+{
+	"files.associations": {
+		"lcd_pcd8544.h": "c",
+		"nokia5110_lcd.h": "c"
+	}
+}
