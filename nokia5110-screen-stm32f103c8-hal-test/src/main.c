@@ -93,13 +93,14 @@ int main(void)
   LCD_setDC(LCD_DC_GPIO_Port, LCD_DC_Pin);
   LCD_setDIN(LCD_DIN_GPIO_Port, LCD_DIN_Pin);
   LCD_setCLK(LCD_CLK_GPIO_Port, LCD_CLK_Pin);
+  LCD_setLIGHT(LCD_LIGHT_GPIO_Port, LCD_LIGHT_Pin);
 
   LCD_init();
 
   // Test LCD
   // LCD_print("VIVE LE CHOUKA !!!", 0, 0);
   LCD_printWithFont("Vive le CHOUKA", 0, 0, Ascii11_16);
-  LCD_printWithFont("1280m/s", 0, 4, Ascii11_16);
+  LCD_printWithFont("1289m/s", 0, 4, Ascii11_16);
 
   LCD_setPixel(83, 47, true);
   LCD_refreshArea(83, 47, 83, 47);
@@ -111,10 +112,12 @@ int main(void)
   while (1)
   {
     // For debug use: LED PC13
-    HAL_Delay(100);
+    HAL_Delay(1000);
     HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_RESET);
-    HAL_Delay(400);
+    LCD_setBackLight(true);
+    HAL_Delay(1000);
     HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_SET);
+    LCD_setBackLight(false);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

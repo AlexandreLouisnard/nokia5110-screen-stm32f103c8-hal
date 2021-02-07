@@ -48,6 +48,9 @@ struct LCD_GPIO
 
 	GPIO_TypeDef *CLKPORT;
 	uint16_t CLKPIN;
+
+	GPIO_TypeDef *LIGHTPORT;
+	uint16_t LIGHTPIN;
 };
 
 typedef struct
@@ -62,9 +65,11 @@ void LCD_setCE(GPIO_TypeDef *PORT, uint16_t PIN);
 void LCD_setDC(GPIO_TypeDef *PORT, uint16_t PIN);
 void LCD_setDIN(GPIO_TypeDef *PORT, uint16_t PIN);
 void LCD_setCLK(GPIO_TypeDef *PORT, uint16_t PIN);
+void LCD_setLIGHT(GPIO_TypeDef *PORT, uint16_t PIN);
 void LCD_init();
 void LCD_invert(bool mode);
 void LCD_invertText(bool mode);
+void LCD_setBackLight(bool on);
 
 // Low-level SPI commands
 void LCD_send(uint8_t data, uint8_t mode);

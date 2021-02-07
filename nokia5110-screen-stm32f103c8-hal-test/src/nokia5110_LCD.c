@@ -39,6 +39,12 @@ void LCD_setCLK(GPIO_TypeDef *PORT, uint16_t PIN)
   lcd_gpio.CLKPIN = PIN;
 }
 
+void LCD_setLIGHT(GPIO_TypeDef *PORT, uint16_t PIN)
+{
+  lcd_gpio.LIGHTPORT = PORT;
+  lcd_gpio.LIGHTPIN = PIN;
+}
+
 /*
  * @brief Initializes the LCD using predetermined values.
  * GPIO's must be set before calling this function.
@@ -87,6 +93,11 @@ void LCD_invertText(bool mode)
   {
     lcd.inverttext = false;
   }
+}
+
+void LCD_setBackLight(bool on) {
+    HAL_GPIO_WritePin(lcd_gpio.LIGHTPORT, lcd_gpio.LIGHTPIN, on ? GPIO_PIN_RESET : GPIO_PIN_SET);
+
 }
 // #endregion
 
