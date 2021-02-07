@@ -23,7 +23,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "nokia5110_LCD.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -87,12 +87,34 @@ int main(void)
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
 
+  // Init LCD
+  LCD_setRST(LCD_RST_GPIO_Port, LCD_RST_Pin);
+  LCD_setCE(LCD_CE_GPIO_Port, LCD_CE_Pin);
+  LCD_setDC(LCD_DC_GPIO_Port, LCD_DC_Pin);
+  LCD_setDIN(LCD_DIN_GPIO_Port, LCD_DIN_Pin);
+  LCD_setCLK(LCD_CLK_GPIO_Port, LCD_CLK_Pin);
+
+  LCD_init();
+
+  // Test LCD
+  // LCD_print("VIVE LE CHOUKA !!!", 0, 0);
+  LCD_printWithFont("Vive le CHOUKA", 0, 0, Ascii11_16);
+  LCD_printWithFont("1280m/s", 0, 4, Ascii11_16);
+
+  LCD_setPixel(83, 47, true);
+  LCD_refreshArea(83, 47, 83, 47);
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+    // For debug use: LED PC13
+    HAL_Delay(100);
+    HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_RESET);
+    HAL_Delay(400);
+    HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_SET);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
