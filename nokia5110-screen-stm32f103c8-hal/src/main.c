@@ -112,7 +112,7 @@ int main(void)
   while (1)
   {
     // For debug use: LED PC13
-    HAL_Delay(1000);
+    HAL_Delay(2000);
     HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_RESET);
     LCD_setBackLight(true);
     HAL_Delay(1000);

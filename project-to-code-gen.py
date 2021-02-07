@@ -4,7 +4,7 @@ import os
 import shutil
 
 # Update these directories
-SOURCE_DIR = "nokia5110-screen-stm32f103c8-hal-test"
+SOURCE_DIR = "nokia5110-screen-stm32f103c8-hal"
 SOURCE_SUBDIRS = ["src"]
 TARGET_DIR = "cubemx-code-generator"
 TARGET_SUBDIRS = ["Core/Inc",
